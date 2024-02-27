@@ -1,3 +1,3 @@
 ## Web Scraper Continued (Puppeteer / Node.js)
 
-### Initialize the Web Driver
+### Scrape Parametrics from Part Listing Page
