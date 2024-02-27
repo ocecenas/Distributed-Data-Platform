@@ -12,7 +12,7 @@ Steps:
 5. Upload the data to a database or write to file
 6. Run a query service on the datasets that filters duplicates and merges GPN records with the parametric data
 
-In this guide, Puppeteer will be used as the crawler. Refer to the API reference [here](https://pptr.dev/api/puppeteer.elementhandle). The programming language used in this guide will be Node.js ([Node.js API](https://nodejs.org/docs/latest/api/))
+The programming language used in this guide will be Node.js ([Node.js API](https://nodejs.org/docs/latest/api/)) and the used will be Puppeteer ([Puppeteer API](https://pptr.dev/api/puppeteer.elementhandle)). 
 
 ![image](https://github.com/ocecenas/Distributed-Data-Platform/assets/46056159/b0f4aff1-d2b7-44d3-aea2-790b0270fac5)
 
