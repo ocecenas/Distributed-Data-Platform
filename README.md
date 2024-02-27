@@ -124,6 +124,4 @@ The code below is a function to retrieve the closest match:
         return search_results
     }
 
-## Query Service
 
-Developing a query to merge Agile GPN information with the parametric data retrieved from scraping can be done by either using SQL or Microsoft Power Query.
