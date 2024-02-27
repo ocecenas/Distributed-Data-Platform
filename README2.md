@@ -2,7 +2,7 @@
 
 ### Scrape Parametrics from Part Listing Page
 
-
+Use the Developer tools to find the selectors for the parametric data. Typically, the selectors will be table rows ```<tr>```, paragraphs ```<p>```, span ```<span>```, and anchor tags ```<a>```.
 
 ## Query Service
 
