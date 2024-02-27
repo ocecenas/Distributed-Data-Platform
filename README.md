@@ -38,21 +38,33 @@ Begin a Puppeteer Session by entering the following code. Configuring the browse
 
 ### Search the Parts on the Manufacturer/Supplier Search Engine
 
-In order to scrape the parametric data for a selected part, you first must search and go to the part listing on the manufacturer/supplier website. Using the 
+In order to scrape the parametric data for a selected part, you first must search and go to the part listing on the manufacturer/supplier website. Use the developer tools feature on your browser to find the selectors for the search fields, buttons, links, and text. In CSS, selectors are used to target the HTML elements on our web pages that we want to style. The example below is a function to search for part on SiliconExpert.
 
-    const searchFldCSS = 'input[id="input-searchbox"]'; // Selector for search field
-    const searchBtnCSS = 'button[id="header-main-searchbox-button"]'; // Selector for search button
+    async function searchMPN(page, mpn) {
+        const myDelay = async (ms) => {return await new Promise(resolve => setTimeout(resolve, ms))}
+
+        const searchFldCSS = 'input[id="input-searchbox"]'; // Selector for search field
+        const searchBtnCSS = 'button[id="header-main-searchbox-button"]'; // Selector for search button
 
 
-    // Wait for the page to load and enter the MPN into the search field
-    await page.waitForSelector(searchFldCSS)
-    await page.focus(searchFldCSS);
-    await page.type(searchFldCSS, mpn);
-    await myDelay(1000);
+        // Wait for the page to load and enter the MPN into the search field
+        await page.waitForSelector(searchFldCSS)
+        await page.focus(searchFldCSS);
+        await page.type(searchFldCSS, mpn);
+        await myDelay(1000); // wait 1 second
 
-    // Click the search button and wait for search results
-    await page.focus(searchBtnCSS)
-    await page.click(searchBtnCSS)
+        // Click the search button and wait for search results
+        await page.focus(searchBtnCSS)
+        await page.click(searchBtnCSS)
+        await myDelay(3000); // wait 3 second
+
+        await page.$eval(searchFldCSS, (ele) => {ele.value = ''}) // Clear the search field
+
+        const result_banner = `div[class="wrapper n_results_for"]` // Selector for the search results banner
+        let obj = {startTime: null, timeout: 5000, flag: mpn} // Object to pass to waitUntilFlag function
+        await waitUntilFlag(read_page, obj, page, result_banner) // Wait until the search results banner is displayed
+        
+    }
 
 ## Query Service
 
