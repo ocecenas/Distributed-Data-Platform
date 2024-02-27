@@ -1,4 +1,4 @@
-# Distributed-Data-Platform
+# Distributed Data Platform
 
 ## Overview
 ![image](https://github.com/ocecenas/Distributed-Data-Platform/assets/46056159/cb43ce70-28d2-4944-a484-0bd62dc94716)
@@ -33,6 +33,8 @@ Begin a Puppeteer Session by entering the following code. Configuring the browse
 
 
 ### Search the Parts on the Manufacturer/Supplier Search Engine
+
+Visit a select manufacturer/supplier website (login if necessary) and feed the manufacturer parts into their search engine. 
 
 ### Select Part from the Results Page by Closest Match
 
