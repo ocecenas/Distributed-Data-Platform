@@ -29,6 +29,6 @@ Part data should frequently be written to a JSON file, so that data will not be 
 
 ## Query Service (Microsoft Power Query)
 
-Developing a query to merge Agile GPN information with the parametric data retrieved from scraping can be done by either using SQL or Microsoft Power Query ([Power Query Documentation](https://learn.microsoft.com/en-us/powerquery-m/power-query-m-function-reference))
+Developing a query to merge Agile GPN information with the parametric data retrieved from scraping can be done with Microsoft Power Query ([Power Query Documentation](https://learn.microsoft.com/en-us/powerquery-m/power-query-m-function-reference)). You may also use SQL to write the query to merge GPN information with the scraped parametric data.
 
 Use Get Data option under the Data Tab in Microsoft Excel to upload the JSON file into Excel. 
