@@ -79,7 +79,50 @@ The example below is a function to search for part on SiliconExpert:
         await waitUntilFlag(read_page, obj, page, result_banner) // Wait until the search results banner is displayed
     }
 
+The code below is a function to retrieve the closest match:
 
+    async function retrieveResult(page, mpn_item) {
+        const tblRowCSS = 'tbody[role="presentation"] > tr'
+        await page.waitForSelector(tblRowCSS)
+        let search_results = await page.$$eval(tblRowCSS, function(rowEls) {
+            const mpnCSS = `partnumber-cell-grid a`;
+            const mfrCSS = `manufacturer-cell-grid a`;
+            const type_sel = `td[data-kendo-grid-column-index="6"] > span`
+            let search_results = []
+            if (!Array.isArray(rowEls)) {
+                let item = {mfr: null, mpn: null, type: null, mpn_link: null}
+                item.mfr = rowEls.querySelector(mfrCSS).textContent
+                item.mpn = rowEls.querySelector(mpnCSS).textContent
+                item.type = rowEls.querySelector(type_sel).textContent
+
+                item.link = `https://my.siliconexpert.com${rowEls.querySelector(mpnCSS).getAttribute('href')}`
+                search_results.push(item)
+
+                return search_results
+            }
+            
+            for (let i = 0; i < rowEls.length; i++) {
+                let item = {mfr: null, mpn: null, type: null}
+                item.mfr = rowEls[i].querySelector(mfrCSS).innerText
+                item.mpn = rowEls[i].querySelector(mpnCSS).innerText
+                item.type = rowEls[i].querySelector(type_sel).innerText
+
+                item.link = `https://my.siliconexpert.com${rowEls[i].querySelector(mpnCSS).getAttribute('href')}`
+                search_results.push(item)
+            }
+
+            return search_results
+        })
+
+
+        for (let i = 0; i < search_results.length; i++) {
+            search_results[i]["distance_mpn"] = levenshtein.get(mpn_item['Part'], search_results[i]["mpn"], { useCollator: true});
+            search_results[i]["distance_mfr"] = levenshtein.get(mpn_item['Mfr'], search_results[i]["mfr"], { useCollator: true});
+            search_results[i]["mpn_main"] = mpn_item["Part"]
+        }
+
+        return search_results
+    }
 
 ## Query Service
 
