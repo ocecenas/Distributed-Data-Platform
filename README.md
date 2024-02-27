@@ -3,9 +3,9 @@
 Overview
 
 ## Prerequisites
-Visual Studio
-WebDriver: Puppeteer, Selenium, or Microsoft Edge WebDriver
-.NET, NodeJS, or Python
+- Visual Studio
+- WebDriver: Puppeteer, Selenium, or Microsoft Edge WebDriver
+- .NET, NodeJS, or Python
 
 ## Load the Parts
 Load the MPNs from a file or database, ensure that the record is related to the GPN and there is a specified Manufacturer and Manufacturer Part Number. 
