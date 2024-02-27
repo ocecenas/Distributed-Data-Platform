@@ -38,11 +38,21 @@ Begin a Puppeteer Session by entering the following code. Configuring the browse
 
 ### Search the Parts on the Manufacturer/Supplier Search Engine
 
-Visit a select manufacturer/supplier website (login if necessary) and feed the manufacturer parts into their search engine. 
+In order to scrape the parametric data for a selected part, you first must search and go to the part listing on the manufacturer/supplier website. Using the 
 
-### Select Part from the Results Page by Closest Match
+    const searchFldCSS = 'input[id="input-searchbox"]'; // Selector for search field
+    const searchBtnCSS = 'button[id="header-main-searchbox-button"]'; // Selector for search button
 
-### Scrape the Parametrics from the Part Page
+
+    // Wait for the page to load and enter the MPN into the search field
+    await page.waitForSelector(searchFldCSS)
+    await page.focus(searchFldCSS);
+    await page.type(searchFldCSS, mpn);
+    await myDelay(1000);
+
+    // Click the search button and wait for search results
+    await page.focus(searchBtnCSS)
+    await page.click(searchBtnCSS)
 
 ## Query Service
 
