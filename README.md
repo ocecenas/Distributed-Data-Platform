@@ -1,6 +1,7 @@
 # Distributed-Data-Platform
 
 ## Overview
+![image](https://github.com/ocecenas/Distributed-Data-Platform/assets/46056159/cb43ce70-28d2-4944-a484-0bd62dc94716)
 
 ## Prerequisites
 - Visual Studio
