@@ -15,7 +15,7 @@ This distributed data processing method will retrieve parametric data for select
 ## Load the Parts
 Load the MPNs from a file or database, ensure that the record is related to the GPN and there is a specified Manufacturer and Manufacturer Part Number. 
 
-## Web scraper Deployment (Puppeteer use in Node.js)
+## Web Scraper Deployment (Puppeteer / Node.js)
 
 ### Initialize the Web Driver
 
