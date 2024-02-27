@@ -25,7 +25,7 @@ The programming language used in this guide will be Node.js ([Node.js API](https
 ## Load the Parts
 Load the MPNs from a file or database, ensure that the record is related to the GPN and there is a specified Manufacturer and Manufacturer Part Number. 
 
-## Web Scraper Deployment (Puppeteer / Node.js)
+## Web Scraping (Puppeteer / Node.js)
 
 ### Initialize the Web Driver
 
