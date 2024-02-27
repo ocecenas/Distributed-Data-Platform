@@ -37,7 +37,7 @@ Use Get Data option under the Data Tab in Microsoft Excel to upload the JSON fil
 Query for Joining & Merging Relevant Parametrics on the Parametric Data retrieved from SiliconExpert:
 
     let
-        Source = Excel.Workbook(File.Contents("C:\Users\cecenasomar\OneDrive - Garmin\Documents\cecenasomar-workspace\!Engineering Support\Inductor Parametric Search\Inductors\SE_Export.xlsx"), null, true),
+        Source = Excel.Workbook(File.Contents("Inductors\SE_Export.xlsx"), null, true),
         #"Sorted Rows" = Table.Sort(Source,{{"Name", Order.Ascending}}),
         #"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each ([Kind] <> "Sheet")),
         se_data_final_Table = #"Filtered Rows"{[Item="se_data_final",Kind="Table"]}[Data],
@@ -49,7 +49,7 @@ Query for Joining & Merging Relevant Parametrics on the Parametric Data retrieve
 Query for Joining & Merging Relevant Parametrics on the Parametric Data retrieved directly from the Manufacturer Website:
 
     let
-        Source = Excel.Workbook(File.Contents("C:\Users\cecenasomar\OneDrive - Garmin\Documents\cecenasomar-workspace\!Engineering Support\Inductor Parametric Search\Inductors\mur_coilcraft_tdk1.xlsx"), null, true),
+        Source = Excel.Workbook(File.Contents("Inductors\mur_coilcraft_tdk1.xlsx"), null, true),
         SelectMfrTbl_Append_Table = Source{[Item="SelectMfrTbl_Append",Kind="Table"]}[Data],
         #"Changed Type" = Table.TransformColumnTypes(SelectMfrTbl_Append_Table,{{"Part Number", type text}, {"Description", type text}, {"Subclass", type text}, {"Mfr Name", type text}, {"MPN", type text}, {"MPN From Site", type text}, {"Link", type text}, {"Match", type text}, {"Current - RMS (mA)", Int64.Type}, {"DC Resistance - Max (Ohms)", type number}, {"DC Current - Max (mA)", type any}, {"Saturation Current - Max (mA)", Int64.Type}, {"Self-Resonant Frequency - Min (Hz)", Int64.Type}, {"Quality Factor - Min", Int64.Type}, {"Quality Test Frequency (Hz)", Int64.Type}, {"Package Size (mm2)", type number}, {"Product Height (mm)", type number}, {"Package Type", type any}, {"Length", type number}, {"Width", type number}, {"Height", type number}}),
         #"Added Custom" = Table.AddColumn(#"Changed Type", "Source", each "Select Mfr")
