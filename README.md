@@ -15,6 +15,23 @@ Load the MPNs from a file or database, ensure that the record is related to the 
 
 ### Initialize the Web Driver
 
+Begin a Puppeteer Session by entering the following code. Configuring the browser with headless off will make debugging the program easier.
+
+    const puppeteer = require('puppeteer')
+
+    const options = {width: 1800, height: 1080};
+    const browser = await puppeteer.launch({
+        headless: false,
+        executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        args: [`--window-size=${options.width},${options.height}`], // new option
+    })
+
+    const page = await browser.newPage();
+    await page.setViewport({ width: options.width,height: options.height });
+    await page.goto(URL, {waitUntil:'networkidle2'});
+
+
+
 ### Search the Parts on the Manufacturer/Supplier Search Engine
 
 ### Select Part from the Results Page by Closest Match
