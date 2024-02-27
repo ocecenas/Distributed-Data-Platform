@@ -12,6 +12,21 @@ Use the Developer tools to find the selectors for the parametric data. Typically
         return item
     }, row_element)
 
+### Write the Parametric Data to a JSON file
+
+Part data should frequently be written to a JSON file, so that data will not be lost if an error were to occur. The JSON file will later be used to uploaded to a database or loaded into Excel. A function to write an array of objects to a JSON file is listed below:
+
+    function saveJSON(filename, obj_arr) {
+        let content = '[\r\n' + obj_arr.map(item => JSON.stringify(item)).join(',\r\n') + '\r\n]'
+    
+        if (fs.existsSync(filename)) {
+        fs.truncate(filename, 0, function() { console.log('done') })
+        fs.writeFile(filename, content, {encoding:'utf8',flag: 'a+'}, err => {}); 
+        } else {
+        fs.writeFile(filename, content, {encoding:'utf8',flag:'w+'}, err => {}); 
+        }
+    }
+
 ## Query Service
 
 Developing a query to merge Agile GPN information with the parametric data retrieved from scraping can be done by either using SQL or Microsoft Power Query.
