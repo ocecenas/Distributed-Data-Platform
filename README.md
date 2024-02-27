@@ -48,7 +48,7 @@ Begin a Puppeteer Session by entering the following code. Configuring the browse
 
 ### Search the Parts on the Manufacturer/Supplier Search Engine
 
-In order to scrape the parametric data for a selected part, you first must search and go to the part listing on the manufacturer/supplier website. Use the developer tools feature on your browser to find the selectors for the search fields, buttons, links, and text. Use the ```page.type(selector, input_text)``` function to enter the Part Number into the field and the ```page.click(selector)``` function to click the search button.
+In order to scrape the parametric data for a selected part, you first must search and go to the part listing on the manufacturer/supplier website. Use the developer tools on the browser to find the selectors for the search fields, buttons, links, and text. Use the ```page.type(selector, input_text)``` function to enter the Part Number into the field and the ```page.click(selector)``` function to click the search button.
 
 Retrieve part listing from the search results by selecting the result with the shortest [levenstein distance](https://www.npmjs.com/package/fast-levenshtein). 
 
