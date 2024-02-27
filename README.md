@@ -2,7 +2,7 @@
 
 ## Overview
 
-This distributed data processing method will retrieve parametric data for selected Manufacturer Parts. It will retrieve parametric data for a selected part by using a crawler to search for matches on Manufacturer/Supplier Website. No frameworks will be used to faciliate the data processing (ex. Apache Spark or Apache Airflow).
+This distributed data processing method will retrieve parametric data for selected Manufacturer Parts. It will retrieve parametric data for a selected part by using a crawler to search for matches on the Manufacturer/Supplier Website. No frameworks will be used to faciliate the data processing (ex. Apache Spark or Apache Airflow).
 
 ![image](https://github.com/ocecenas/Distributed-Data-Platform/assets/46056159/cb43ce70-28d2-4944-a484-0bd62dc94716)
 
