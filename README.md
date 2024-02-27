@@ -4,6 +4,13 @@
 
 This distributed data processing method will retrieve parametric data for selected Manufacturer Parts. It will retrieve parametric data for a selected part by using a crawler to search for matches on the Manufacturer/Supplier Website. No frameworks will be used to faciliate the data processing (ex. Apache Spark or Apache Airflow). 
 
+1. Load the parts from the database or file
+2. Initialize the Web Driver
+3. Search the Parts on the Manufacturer/Supplier Search Engine
+4. Retrieve Parametric Data from the part listing page.
+5. Upload the data to a database or write to file
+6. Run a query service on the datasets that filters duplicates and merges GPN records with the parametric data
+
 In this documentation, Puppeteer will be used as the crawler. Refer to the API reference here: https://pptr.dev/api/puppeteer.elementhandle
 
 ![image](https://github.com/ocecenas/Distributed-Data-Platform/assets/46056159/b0f4aff1-d2b7-44d3-aea2-790b0270fac5)
