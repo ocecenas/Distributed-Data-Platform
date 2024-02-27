@@ -2,7 +2,9 @@
 
 ## Overview
 
-This distributed data processing method will retrieve parametric data for selected Manufacturer Parts. It will retrieve parametric data for a selected part by using a crawler to search for matches on the Manufacturer/Supplier Website. No frameworks will be used to faciliate the data processing (ex. Apache Spark or Apache Airflow).
+This distributed data processing method will retrieve parametric data for selected Manufacturer Parts. It will retrieve parametric data for a selected part by using a crawler to search for matches on the Manufacturer/Supplier Website. No frameworks will be used to faciliate the data processing (ex. Apache Spark or Apache Airflow). 
+
+In this documentation, Puppeteer will be used as the crawler. Refer to the API reference here: https://pptr.dev/api/puppeteer.elementhandle
 
 ![image](https://github.com/ocecenas/Distributed-Data-Platform/assets/46056159/b0f4aff1-d2b7-44d3-aea2-790b0270fac5)
 
@@ -38,7 +40,9 @@ Begin a Puppeteer Session by entering the following code. Configuring the browse
 
 ### Search the Parts on the Manufacturer/Supplier Search Engine
 
-In order to scrape the parametric data for a selected part, you first must search and go to the part listing on the manufacturer/supplier website. Use the developer tools feature on your browser to find the selectors for the search fields, buttons, links, and text. In CSS, selectors are used to target the HTML elements on our web pages that we want to style. The example below is a function to search for part on SiliconExpert.
+In order to scrape the parametric data for a selected part, you first must search and go to the part listing on the manufacturer/supplier website. Use the developer tools feature on your browser to find the selectors for the search fields, buttons, links, and text. In CSS, selectors are used to target the HTML elements on our web pages that we want to style. 
+
+The example below is a function to search for part on SiliconExpert:
 
     async function searchMPN(page, mpn) {
         const myDelay = async (ms) => {return await new Promise(resolve => setTimeout(resolve, ms))}
@@ -63,8 +67,9 @@ In order to scrape the parametric data for a selected part, you first must searc
         const result_banner = `div[class="wrapper n_results_for"]` // Selector for the search results banner
         let obj = {startTime: null, timeout: 5000, flag: mpn} // Object to pass to waitUntilFlag function
         await waitUntilFlag(read_page, obj, page, result_banner) // Wait until the search results banner is displayed
-        
     }
+
+
 
 ## Query Service
 
